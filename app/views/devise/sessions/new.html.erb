@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="span3 offset3">
+  <h3>Var god logga in</h3>
+</div>
+<div id="login" class="span5 offset3 well">
+   <%= form_for("user", :url => user_session_path, :method => "post") do |f| %>
+    <%= f.text_field :email, :placeholder => "Skriv in din email..."  %>
+    <%= f.password_field :password %>
+     <p>
+    	<%= f.submit 'Logga in', :class => "btn btn-success"%>
+     </p>
+   <% end %>
+</div>
+<% if request.post? %>
+  <div style="height: 20px; text-align: center; width: 370px;" class="alert alert-error span5 offset3">
+    <p style="height: 20px; text-align: center;">Fel användarnamn eller lösenord!</p>
+  </div>
+   <div style="height: 20px; text-align: center; width: 370px;" class="alert alert-info span5 offset3">
+    <p style="height: 20px; text-align: center;">
+    	Tänk på att använda din email som användarnamn.
+    </p>
+  </div>
+<% end %>
+

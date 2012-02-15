@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cms</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "CMS-BUILDER", root_path, :class => "brand" %>
+      <ul class="nav">
+      <% if user_signed_in? %>
+         <li><%= link_to "Sidor", root_path, :class => "popuper" %></li>
+         <li><%= link_to "Design", root_path %></li>
+         <li><%= link_to "Add-ons", "/info" %></li>
+         <li><%= link_to "Användare", "/contact" %></li>
+         <li><%= link_to "Verktyg", "/contact" %></li>
+       <li id="uname" class="btn btn-info" data-content="information" rel="popover" data-original-title="Kundinformation"> <%= current_user.email %></li>
+      <% else %>
+         <li><%= link_to "Information", "/info" %></li>
+         <li><%= link_to "Hjälp", "/contact" %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 70px;" class="container">
+  <div class="row">
+  </div>
+  <div id="content" class="row">
+    <%= yield %>
+  </div>
+  <div class="row">
+  </div>
+</div>
+</body>
+</html>
