@@ -4,6 +4,8 @@ CmsBeta2::Application.routes.draw do
   match "/system" => "system#index"
   match "/home" => "home#index"
   match "/user" => "home#index"
+  match "/pages" => "system#pages"
+  match "/pages/:id" => "system#pages"
  devise_scope :user do
   get "home" => "devise/sessions#new"
 end

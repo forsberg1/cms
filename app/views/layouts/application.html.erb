@@ -13,7 +13,7 @@
       <%= link_to "CMS-BUILDER", root_path, :class => "brand" %>
       <ul class="nav">
       <% if user_signed_in? %>
-         <li><%= link_to "Sidor", root_path, :class => "popuper" %></li>
+         <li><%= link_to "Sidor", pages_path, :class => "popuper" %></li>
          <li><%= link_to "Design", root_path %></li>
          <li><%= link_to "Add-ons", "/info" %></li>
          <li><%= link_to "Användare", "/contact" %></li>

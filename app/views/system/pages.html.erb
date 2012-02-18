@@ -1,0 +1,46 @@
+<div style="width: 819px;" class="alert alert-info span10">
+	<b>Allämn infomrmation om denna sidan</b>
+	<ul>
+		<li>Ändra sidinställningar</li>
+		<li>Skapa nya sidor</li>
+	</ul>
+</div>
+<div class="span3">
+  <div class="well" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">Sidträ</li>
+     <ol class="trees">
+     	<% @pageTree.each do |pt| %>
+     		<li class="file">
+     			<%= link_to "#{pt.name}", "/pages/#{pt.id}", :class => "getinfo file", "data-id" =>  pt.id, :remote => false %>
+     		</li>
+     	<% end %>
+	    
+	    <!-- <li>
+	        <label for="subfolder1">Subfolder 1</label>
+	        <input type="checkbox" id="subfolder1" />
+	        <ol>
+	            <li class="file"><a href="">File 2</a></li>
+	            <li class="file"><a href="">File 2</a></li>
+	            <li class="file"><a href="">File 2</a></li>
+	        </ol>
+	    </li> -->
+	 </ol>
+      <li class="nav-header">Another list header</li>
+      <li><a href="#"><i class="icon-user"></i> Konto</a></li>
+      <li><a href="#"><i class="icon-cog"></i> Inställnngar</a></li>
+      <li><a href="#"><i class="icon-flag"></i> Hjälp</a></li>
+      <li><%= fetch_sign_out_link %></li>
+    </ul>
+  </div>
+</div>
+<div id="right_col" class="well span8">
+  <h2>sidInställningar</h2>
+  <div class="span8 data-display">
+    <% @p_settings.each do |ps| %>
+      <p><%= ps.name %> </p>
+    <% end %>
+  </div>
+  
+</div>
+
