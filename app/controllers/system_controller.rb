@@ -12,7 +12,7 @@ class SystemController < ApplicationController
 		@pageTree = Page.where(userid: current_user.id)
 		#render(:pages) {|page| page.replace_html 'right_col_div', :partial => 
 		#'system/pages'} 
-		@p_settings = Page.where(id: params[:id])
+		@p_settings = Page.where(id: params[:id]).where(userid: current_user.id)
 	end
 	def show_info
 	end
