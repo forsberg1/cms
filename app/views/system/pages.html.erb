@@ -34,12 +34,15 @@
     </ul>
   </div>
 </div>
+<div style="margin-left: 530px; margin-bottom: 3px;" class="span2">
+  <%= link_to "Skapa en ny sida", "#", :class => "btn btn-info create-page" %>
+</div>
 <div id="right_col" class="well span8">
   <div class="span8 data-display">
     <p class="infotext">Välj en sida till höger för att ändra eller skapa en ny sida
     <% @p_settings.each do |ps| %>
         <div class="btn-group">
-         <%= link_to "Skapa en ny sida", "#", :class => "btn btn-info create-page" %>
+         
           <a class="btn btn-success" href="#">Inställningar för <b> <%= "#{ps.name}" %></b></a>
           <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
           <span class="caret"></span>
