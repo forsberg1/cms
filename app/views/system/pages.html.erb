@@ -35,35 +35,53 @@
   </div>
 </div>
 <div style="margin-left: 530px; margin-bottom: 3px;" class="span2">
-  <%= link_to "Skapa en ny sida", "#", :class => "btn btn-info create-page" %>
+  <%= link_to "Skapa en ny sida", "#", :class => "btn btn-success create-page" %>
 </div>
 <div id="right_col" class="well span8">
   <div class="span8 data-display">
-    <p class="infotext">Välj en sida till höger för att ändra eller skapa en ny sida
     <% @p_settings.each do |ps| %>
-        <div class="btn-group">
-         
-          <a class="btn btn-success" href="#">Inställningar för <b> <%= "#{ps.name}" %></b></a>
-          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
-          <span class="caret"></span>
+    <div style="width: 555px;" class="alert alert-warning">
+      Tryck på önskad inställning för att aktivera eller inaktivera en inställning.
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="focusedInput">Sidnamn</label>
+      <div class="controls">
+      <input id="focusedInput" class="input-xlarge focused" type="text" placeholder=" <%= "#{ps.name}" %>"> 
+      <p><a href="#" class="btn">Ändra</a></p>
+      </div>
+    </div>
+   
+
+        
+          <p>
+          <p>Allmäna inställningar</p>
+          <a class="btn btn-info btn-small" data-toggle="button" href="#">
+            <i class="icon-cog icon-white"></i>
+                Publicerad
           </a>
-          <ul class="dropdown-menu">
-            <li>
-              <label class="checkbox">
-                <input class="checkbox-p-settings" type="checkbox"> Publicerad
-              </label>
-            </li>
-            <li>
-              <label class="checkbox">
-                <input class="checkbox-p-settings" type="checkbox"> Kan editeras
-              </label>
-            </li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
+          <a class="btn btn-info btn-small" data-toggle="button" href="#">
+            <i class="icon-cog icon-white"></i>
+                Editerbar
+          </a>
+        </p>
+        <p>
+           <p>Modul inställningar</p>
+            <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+            <i class="icon-cog icon-white"></i>
+                Lösenordsskyddad
+          </a>
+           <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+            <i class="icon-cog icon-white"></i>
+                Nyheter
+          </a>
+          <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+            <i class="icon-cog icon-white"></i>
+                Bildgalleri
+          </a>
+          </p>
     <% end %>
-  </div>
+  
+</div>
   
 </div>
 
