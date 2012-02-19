@@ -8,12 +8,8 @@ class SystemController < ApplicationController
   	  @ip_addr   = request.env['REMOTE_ADDR']
 	end
 	def pages
-		@dashoard = Dashboard.new
-		@pageTree = Page.where(userid: current_user.id)
-		#render(:pages) {|page| page.replace_html 'right_col_div', :partial => 
-		#'system/pages'} 
+		@dashoard   = Dashboard.new
+		@pageTree   = Page.where(userid: current_user.id)
 		@p_settings = Page.where(id: params[:id]).where(userid: current_user.id)
-	end
-	def show_info
 	end
 end

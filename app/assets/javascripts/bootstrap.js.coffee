@@ -7,7 +7,7 @@ $ ->
 $ ->
   $("a[rel=popover]").popover offset: 10
 $ ->
-  $(".topbar-wrapper").dropdown()
+  $(".dropdown-toggle").dropdown()
 $ ->
   $(".alert-message").alert()
 $ ->
@@ -17,3 +17,4 @@ $ ->
   )
   $(".open-modal").click ->
     domModal.toggle()  
+

@@ -1,5 +1,5 @@
 <div style="width: 819px;" class="alert alert-info span10">
-	<b>Allämn infomrmation om denna sidan</b>
+	<b>Allämn information om denna sidan</b>
 	<ul>
 		<li>Ändra sidinställningar</li>
 		<li>Skapa nya sidor</li>
@@ -12,11 +12,11 @@
      <ol class="trees">
      	<% @pageTree.each do |pt| %>
      		<li class="file">
-     			<%= link_to "#{pt.name}", "/pages/#{pt.id}", :class => "getinfo file", "data-id" =>  pt.id, :remote => false %>
+     			<%= link_to "#{pt.name}", "/pages/#{pt.id}", :class => "getinfo icon-file", "data-id" =>  "#{pt.id}", :remote => false %>
      		</li>
      	<% end %>
-	    
-	    <!-- <li>
+	 <!--    
+	  <li>
 	        <label for="subfolder1">Subfolder 1</label>
 	        <input type="checkbox" id="subfolder1" />
 	        <ol>
@@ -24,7 +24,7 @@
 	            <li class="file"><a href="">File 2</a></li>
 	            <li class="file"><a href="">File 2</a></li>
 	        </ol>
-	    </li> -->
+	    </li>  -->
 	 </ol>
       <li class="nav-header">Another list header</li>
       <li><a href="#"><i class="icon-user"></i> Konto</a></li>
@@ -35,10 +35,30 @@
   </div>
 </div>
 <div id="right_col" class="well span8">
-  <h2>sidInställningar</h2>
   <div class="span8 data-display">
+    <p class="infotext">Välj en sida till höger för att ändra eller skapa en ny sida
     <% @p_settings.each do |ps| %>
-      <p><%= ps.name %> </p>
+        <div class="btn-group">
+         <%= link_to "Skapa en ny sida", "#", :class => "btn btn-info create-page" %>
+          <a class="btn btn-success" href="#">Inställningar för <b> <%= "#{ps.name}" %></b></a>
+          <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <label class="checkbox">
+                <input class="checkbox-p-settings" type="checkbox"> Publicerad
+              </label>
+            </li>
+            <li>
+              <label class="checkbox">
+                <input class="checkbox-p-settings" type="checkbox"> Kan editeras
+              </label>
+            </li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
     <% end %>
   </div>
   

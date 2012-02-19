@@ -2,9 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
-  $('.getinfo').live 'click', (event) =>
-  	
- 	#alert("Success!");
+	$('.checkbox-p-settings').bind 'click',  =>
+		console.log "dsadad" # Toggle options for pages
+	$('.create-page').bind 'click', =>
+		alert "Create a new page"
 
 
 

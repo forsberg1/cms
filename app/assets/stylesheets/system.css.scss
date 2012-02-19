@@ -1,11 +1,15 @@
 // Place all the styles related to the system controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+ul.dropdown-menu
+{
+	padding: 5px;
+	width: 400px;
+}
 #right_col
 {
 	padding: 5px;
-	min-height: 233px;
+	min-height: 40px;
 }
 h2
 {

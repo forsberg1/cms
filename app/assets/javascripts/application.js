@@ -13,9 +13,12 @@
 //= require backbone_datalink
 //= require backbone/cms_beta2
 //= require_tree .
-
-
 $(document).ready(function() {
-  $('[rel=popover]').popover()
- 
+  $('.dropdown-toggle').click(function() {
+  $('.dropdown-menu').toggle('fast', function() {
+    // Animation complete.
+  });
 });
+});
+
+
