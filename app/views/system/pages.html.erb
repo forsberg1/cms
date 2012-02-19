@@ -15,6 +15,7 @@
      			<%= link_to "#{pt.name}", "/pages/#{pt.id}", :class => "getinfo icon-file", "data-id" =>  "#{pt.id}", :remote => false %>
      		</li>
      	<% end %>
+
 	 <!--    
 	  <li>
 	        <label for="subfolder1">Subfolder 1</label>
@@ -34,9 +35,7 @@
     </ul>
   </div>
 </div>
-<div style="margin-left: 530px; margin-bottom: 3px;" class="span2">
-  <%= link_to "Skapa en ny sida", "#", :class => "btn btn-success create-page" %>
-</div>
+
 <div id="right_col" class="well span8">
   <div class="span8 data-display">
     <% @p_settings.each do |ps| %>
@@ -50,37 +49,38 @@
       <p><a href="#" class="btn">Ändra</a></p>
       </div>
     </div>
-   
+    <p>
+    <p>Allmäna inställningar</p>
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Publicerad
+    </a>
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Editerbar
+    </a>
+  </p>
+  <p>
+     <p>Modul inställningar</p>
+      <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Lösenordsskyddad
+    </a>
+     <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Nyheter
+    </a>
+    <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Bildgalleri
+    </a>
+    </p>
 
-        
-          <p>
-          <p>Allmäna inställningar</p>
-          <a class="btn btn-info btn-small" data-toggle="button" href="#">
-            <i class="icon-cog icon-white"></i>
-                Publicerad
-          </a>
-          <a class="btn btn-info btn-small" data-toggle="button" href="#">
-            <i class="icon-cog icon-white"></i>
-                Editerbar
-          </a>
-        </p>
-        <p>
-           <p>Modul inställningar</p>
-            <a class="btn btn-warning btn-small" data-toggle="button" href="#">
-            <i class="icon-cog icon-white"></i>
-                Lösenordsskyddad
-          </a>
-           <a class="btn btn-warning btn-small" data-toggle="button" href="#">
-            <i class="icon-cog icon-white"></i>
-                Nyheter
-          </a>
-          <a class="btn btn-warning btn-small" data-toggle="button" href="#">
-            <i class="icon-cog icon-white"></i>
-                Bildgalleri
-          </a>
-          </p>
-    <% end %>
-  
+<% end %>
+  <div style="margin-left: 480px;" class="span2">
+        <%= link_to "Skapa en ny sida", "#", :class => "btn btn-success create-page" %>
+    </p>
+  </div>
 </div>
   
 </div>
