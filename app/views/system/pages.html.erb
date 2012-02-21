@@ -100,16 +100,19 @@
           Bildgalleri
     </a>
     </p>
-
-<% end %>
-  <div style="margin-left: 480px;" class="span2">
+    <div style="margin-left: 480px;" class="span2">
         <%= link_to "Skapa en ny sida", "#myModal", 
                     :class => "btn btn-success ", 
                     "data-toggle" => "modal" %>
-  </div>
-  <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+    </div>
+    <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+        <%= link_to "Editera sida", "http://frontend.dev/editor/pages/" + page.id.to_s, :class => "btn btn-warning", "style" => "width: 102px;", "target" => "_window" %>
+    </div>
+    <div style="margin-left: 480px; margin-top: 5px;" class="span2">
         <%= link_to "Ta bort sida", "#", :class => "btn btn-danger", "style" => "width: 102px;" %>
-  </div>
+    </div>
+<% end %>
+  
 </div>
   
 </div>

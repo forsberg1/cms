@@ -19,7 +19,7 @@
          <li><%= link_to "Add-ons", "/info" %></li>
          <li><%= link_to "Användare", "/contact" %></li>
          <li><%= link_to "Verktyg", "/contact" %></li>
-       <li id="uname" class="btn btn-purble" data-content="information" rel="popover" data-original-title="Kundinformation"><b> <%= current_user.email %></b></li>
+       <li id="uname" class="btn btn-info" data-content="information" rel="popover" data-original-title="Kundinformation"><b> <%= current_user.email %></b></li>
       <% else %>
          <li><%= link_to "Information", "/info" %></li>
          <li><%= link_to "Hjälp", "/contact" %></li>
