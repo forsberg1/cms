@@ -14,6 +14,7 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+
 article,
 aside,
 details,
@@ -2055,6 +2056,10 @@ button.btn.small, input[type="submit"].btn.small {
   background-color: #dff0d8;
   border-color: #d6e9c6;
 }
+.alert-system {
+  background-color: #BA6587;
+  border-color: #AB4F74;
+}
 .alert-success, .alert-success .alert-heading {
   color: #468847;
 }
@@ -3673,6 +3678,21 @@ ul#nav_ul_main li
   left: 526px;
   top: 0px;
   position: absolute;
+}
+.btn-purble {
+  background-color: hsl(312, 80%, 43%) !important;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(hsl(312, 80%, 53%)), to(hsl(312, 80%, 43%)));
+  background-image: -moz-linear-gradient(top, hsl(312, 80%, 53%), hsl(312, 80%, 43%));
+  background-image: -ms-linear-gradient(top, hsl(312, 80%, 53%), hsl(312, 80%, 43%));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, hsl(312, 80%, 53%)), color-stop(100%, hsl(312, 80%, 43%)));
+  background-image: -webkit-linear-gradient(top, hsl(312, 80%, 53%), hsl(312, 80%, 43%));
+  background-image: -o-linear-gradient(top, hsl(312, 80%, 53%), hsl(312, 80%, 43%));
+  background-image: linear-gradient(hsl(312, 80%, 53%), hsl(312, 80%, 43%));
+  border-color: hsl(312, 80%, 43%) hsl(312, 80%, 43%) hsl(312, 80%, 40.5%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.16);
+  -webkit-font-smoothing: antialiased;
 }
 /**CLASS HELPERS*/
 .margin-bottom5{margin-bottom: 5px;}

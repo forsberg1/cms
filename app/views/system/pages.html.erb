@@ -1,3 +1,28 @@
+<div class="modal" id="myModal">
+  <div class="modal-header">
+  <a class="close" data-dismiss="modal">×</a>
+  <h3>Skapa en ny sida</h3>
+  </div>
+  <div class="modal-body">
+    <div class="control-group">
+        <label class="control-label" for="siteName">Sidnamn</label>
+        <div class="controls">
+        <input id="siteName" class="input-xlarge focused site-name" type="text" placeholder="Lorem ipsum"> 
+        </div>
+    </div>
+    <div class="controls">
+      <label class="control-label" for="textarea">Standard text</label>
+      <textarea style="height: 230px; width: 400px;" rows="10" id="textarea" class="input-xlarge">
+   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat sem nec diam rutrum a tempor dui lacinia. Nunc aliquet mattis eros sed interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque quam ut mi mattis sed imperdiet metus dictum. Maecenas lorem nibh, ultricies eu congue at, sagittis in nunc.Praesent vitae velit vel purus posuere volutpat. Aenean non lorem neque. Nullam interdum est ut nunc convallis eu pulvinar diam rhoncus. 
+      </textarea>
+    </div>
+
+    </div>
+  <div class="modal-footer">
+  <a href="#" data-toggle="request" class="btn btn-success btn-large create-page">Skapa sida</a>
+  <a href="#" data-dismiss="modal" class="btn btn-large">Stäng detta fönster</a>
+  </div>
+</div>
 <div style="width: 819px;" class="alert alert-info span10">
 	<b>Allämn information om denna sidan</b>
 	<ul>
@@ -38,14 +63,14 @@
 
 <div id="right_col" class="well span8">
   <div class="span8 data-display">
-    <% @p_settings.each do |ps| %>
-    <div style="width: 555px;" class="alert alert-warning">
+    <% @p_settings.each do |page| %>
+    <div style="width: 555px;" class="alert alert-info">
       Tryck på önskad inställning för att aktivera eller inaktivera en inställning.
     </div>
     <div class="control-group">
       <label class="control-label" for="focusedInput">Sidnamn</label>
       <div class="controls">
-      <input id="focusedInput" class="input-xlarge focused" type="text" placeholder=" <%= "#{ps.name}" %>"> 
+      <input id="focusedInput" class="input-xlarge focused" type="text" placeholder=" <%= "#{page.name}" %>"> 
       <p><a href="#" class="btn">Ändra</a></p>
       </div>
     </div>
@@ -62,15 +87,15 @@
   </p>
   <p>
      <p>Modul inställningar</p>
-      <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+      <a class="btn btn-info btn-small" data-toggle="button" href="#">
       <i class="icon-cog icon-white"></i>
           Lösenordsskyddad
     </a>
-     <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+     <a class="btn btn-info btn-small" data-toggle="button" href="#">
       <i class="icon-cog icon-white"></i>
           Nyheter
     </a>
-    <a class="btn btn-warning btn-small" data-toggle="button" href="#">
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
       <i class="icon-cog icon-white"></i>
           Bildgalleri
     </a>
@@ -78,8 +103,12 @@
 
 <% end %>
   <div style="margin-left: 480px;" class="span2">
-        <%= link_to "Skapa en ny sida", "#", :class => "btn btn-success create-page" %>
-    </p>
+        <%= link_to "Skapa en ny sida", "#myModal", 
+                    :class => "btn btn-success ", 
+                    "data-toggle" => "modal" %>
+  </div>
+  <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+        <%= link_to "Ta bort sida", "#", :class => "btn btn-danger", "style" => "width: 102px;" %>
   </div>
 </div>
   

@@ -12,4 +12,11 @@ class SystemController < ApplicationController
 		@pageTree   = Page.where(userid: current_user.id)
 		@p_settings = Page.where(id: params[:id]).where(userid: current_user.id)
 	end
+	def create
+		if (params[:ajax])
+			Page.create!(userid: current_user.id, 
+						 name: params[:pagename], 
+						 content: params[:pagetext])
+		end
+	end
 end

@@ -1,4 +1,4 @@
-$ ->
+###$ ->
   $("body > .topbar").scrollSpy()
 $ ->
   $(".tabs").tabs()
@@ -16,5 +16,5 @@ $ ->
     closeOnEscape: true
   )
   $(".open-modal").click ->
-    domModal.toggle()  
+    domModal.toggle()  ###
 

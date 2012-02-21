@@ -4,6 +4,7 @@
   <title>Cms</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "twitter/bootstrap/bootstrap-scrollspy.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,7 +19,7 @@
          <li><%= link_to "Add-ons", "/info" %></li>
          <li><%= link_to "Användare", "/contact" %></li>
          <li><%= link_to "Verktyg", "/contact" %></li>
-       <li id="uname" class="btn btn-info" data-content="information" rel="popover" data-original-title="Kundinformation"> <%= current_user.email %></li>
+       <li id="uname" class="btn btn-purble" data-content="information" rel="popover" data-original-title="Kundinformation"><b> <%= current_user.email %></b></li>
       <% else %>
          <li><%= link_to "Information", "/info" %></li>
          <li><%= link_to "Hjälp", "/contact" %></li>
@@ -30,7 +31,7 @@
 <div style="margin-top: 70px;" class="container">
   <div class="row">
   </div>
-  <div id="content" class="row">
+  <div id="content" class="row" data-pjax-container>
     <%= yield %>
   </div>
   <div class="row">

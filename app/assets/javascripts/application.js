@@ -7,18 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require backbone/cms_beta2
+//= require jquery.pjax
 //= require_tree .
-$(document).ready(function() {
-  $('.dropdown-toggle').click(function() {
-  $('.dropdown-menu').toggle('fast', function() {
-    // Animation complete.
-  });
-});
-});
+
 
 
