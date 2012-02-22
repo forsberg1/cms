@@ -1,12 +1,14 @@
 CmsBeta2::Application.routes.draw do
  #devise_for :admins
   devise_for :users
-  match "/system" => "system#index"
-  match "/home" => "home#index"
-  match "/user" => "home#index"
-  match "/pages" => "system#pages"
-  match "/create" => "system#create"
+  match "/system"    => "system#index"
+  match "/home"      => "home#index"
+  match "/user"      => "home#index"
+  match "/pages"     => "system#pages"
+  match "/create"    => "system#create"
   match "/pages/:id" => "system#pages"
+  match "/delete"    => "system#delete"
+  match "/update"    => "system#update"
  devise_scope :user do
   get "home" => "devise/sessions#new"
 end

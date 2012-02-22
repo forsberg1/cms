@@ -19,4 +19,14 @@ class SystemController < ApplicationController
 						 content: params[:pagetext])
 		end
 	end
+	def update
+		if (params[:ajax])
+			Page.update(params[:id], :name => params[:name]) 
+		end
+	end
+	def delete
+		if (params[:ajax])
+			Page.delete(params[:id])
+		end
+	end
 end

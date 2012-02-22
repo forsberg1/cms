@@ -30,9 +30,27 @@ $ ->
 			type: 'POST'
 			data: 'ajax=1&pagename='+sitename+'&pagetext='+sitetext
 			success: (msg) ->
-				alert "Sidan skapad utan problem"
+				#alert "Sidan skapad utan problem"
 				$('a.close').click()
 				location.reload()
-
+	# delete page
+	$('.delete-page').on 'click', =>
+		siteid = $('.delete-page').attr "data-id" 
+		$.ajax '/delete'
+			type: 'POST'
+			data: 'ajax=1&id='+siteid
+			success: (msg) ->
+				#alert "Sidan togs bort ur systemet"
+				location.reload()
+	#Change page
+	$('.update-page').on 'click', =>
+		siteid = $('.update-page').attr "data-id"
+		sitetext = $('#focusedInput').attr("value")
+		$.ajax '/update'
+			type: 'POST'
+			data: 'ajax=1&id='+siteid+'&name='+sitetext
+			success: (msg) ->
+				#alert "Sidan uppdaterades."
+				location.reload()
 
 
