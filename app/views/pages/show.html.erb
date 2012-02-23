@@ -1,11 +1,21 @@
-
+<script>
+  $('#myModal').hide();
+   $(".create-page").on("click", function(){
+      $('.new_page').submit();
+     });
+  $(".delete-page").on("click", function(event){
+    event.preventDefault();
+    $(".delete-page").fadeOut("fast");
+    $("#removeHolder").append("<a href='' class='btn btn-info'>Nej</a> <a href='' class='btn btn-danger'>Ja, ta bort.</a>");
+  });
+</script>
 <div class="modal" id="myModal">
   <div class="modal-header">
   <a class="close" data-dismiss="modal">×</a>
   <h3>Skapa en ny sida</h3>
   </div>
   <div class="modal-body">
-    <%= form_for Page.new do |form| %>
+    <%= form_for Page.new, id: "dsad" do |form| %>
     <div class="control-group">
         <label class="control-label" for="siteName">Sidnamn</label>
         <div class="controls">
@@ -20,18 +30,26 @@
     </div>
   
   <div class="modal-footer">
-    <%= form.submit "Skapa sida", class: "btn btn-success btn-large" %>
+    <%= form.submit "Skapa sida", class: "btn btn-success btn-large create-page", "data-toggle" => "true" %>
     <a href="#" data-dismiss="modal" class="btn btn-large">Stäng detta fönster</a>
   </div>
   <% end %>
 </div>
-<div style="width: 819px;" class="alert alert-info span10">
+<div style="width: 819px;" class="alert alert-info span8">
 	<b>Allämn information om denna sidan</b>
 	<ul>
 		<li>Ändra sidinställningar</li>
 		<li>Skapa nya sidor</li>
 	</ul>
 </div>
+<div  class="row">
+  <div style="margin-bottom: 8px; margin-top:-10px; margin-left: 765px;" class="span3 ">
+    <%= link_to "Skapa en ny sida", "#myModal", 
+                :class => "btn btn-success btn-large", 
+                "data-toggle" => "modal" %>
+  </div>
+</div>
+
 <%= render "pagetree" %>
 <div id="right_col" class="well span8">
   <div class="span8 data-display">
@@ -76,15 +94,10 @@
           Bildgalleri
     </a>
     </p>
-    <div style="margin-left: 480px;" class="span2">
-        <%= link_to "Skapa en ny sida", "#myModal", 
-                    :class => "btn btn-success ", 
-                    "data-toggle" => "modal" %>
-    </div>
     <div style="margin-left: 480px; margin-top: 5px;" class="span2">
         <%= link_to "Editera sida", "http://frontend.dev/editor/pages/" + @page.id.to_s, :class => "btn btn-warning", "style" => "width: 102px;", "target" => "_window" %>
     </div>
-    <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+    <div style="margin-left: 480px; margin-top: 5px;" class="span2" id="removeHolder">
         <%= link_to "Ta bort sida", "#", "data-id" => "#{@page.id}",  class: "btn btn-danger delete-page", "style" => "width: 102px;", "data-toggle" => "request" %>
     </div>
   

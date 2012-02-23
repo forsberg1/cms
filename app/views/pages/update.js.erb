@@ -1,7 +1,12 @@
 $("#<%= @page.id %>").html("<%= j @page.name %>");
 $("div.controls").removeClass("controlls");
 $("div.controls").addClass("control-group success");
+$(".input-xlarge").css("background", "#ABEBB4");
+$("#<%= @page.id %>").css("background", "#ABEBB4");
 setTimeout(function(){
-    $("div.controls").removeClass("control-group success");
+    $("div.controls").removeClass("control-group success"); 
+    $(".input-xlarge").css("background", "white");
+    $("#<%= @page.id %>").css("background", "#3A87AD");
 }, 1000);
+
 

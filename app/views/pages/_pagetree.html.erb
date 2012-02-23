@@ -4,9 +4,11 @@
       <li class="nav-header">Sidträd</li>
      <ol class="trees">
      	<% @pageTree.each do |page| %>
-     		<li class="file">
-     			<%= link_to "#{page.name}", page_path(page), id: "#{page.id}", :class => "getinfo icon-file", "data-id" =>  "#{page.id}", remote: false %>
-     		</li>
+      <p>
+        <i class="icon-file"></i>
+        <%= link_to content_tag("span", page.name, style: "min-width: 200px;"),page_path(page), id: "#{page.id}", "data-id" =>  "#{page.id}",  class: "label label-info" %>
+      </p>
+     		
      	<% end %>
 	 </ol>
       <li class="nav-header">Another list header</li>
