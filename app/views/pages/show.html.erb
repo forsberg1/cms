@@ -1,0 +1,93 @@
+
+<div class="modal" id="myModal">
+  <div class="modal-header">
+  <a class="close" data-dismiss="modal">×</a>
+  <h3>Skapa en ny sida</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for Page.new do |form| %>
+    <div class="control-group">
+        <label class="control-label" for="siteName">Sidnamn</label>
+        <div class="controls">
+        <%= form.text_field :name, class: "input-xlarge focused", placeholder: "Lorem ipsum" %>
+        </div>
+    </div>
+   
+    <div class="controls">
+      <label class="control-label" for="textarea">Standard text</label>
+      <%= form.text_area(:content, style: "height: 200px; width: 350px;") %>
+    </div>
+    </div>
+  
+  <div class="modal-footer">
+    <%= form.submit "Skapa sida", class: "btn btn-success btn-large" %>
+    <a href="#" data-dismiss="modal" class="btn btn-large">Stäng detta fönster</a>
+  </div>
+  <% end %>
+</div>
+<div style="width: 819px;" class="alert alert-info span10">
+	<b>Allämn information om denna sidan</b>
+	<ul>
+		<li>Ändra sidinställningar</li>
+		<li>Skapa nya sidor</li>
+	</ul>
+</div>
+<%= render "pagetree" %>
+<div id="right_col" class="well span8">
+  <div class="span8 data-display">
+<!--     <h3>Du editerar just nu sidan: <%= @page.name %></h3>
+ -->    <div style="width: 555px;" class="alert alert-info">
+      Tryck på önskad inställning för att aktivera eller inaktivera en inställning.
+    </div>
+    <div class="control-group" id="change">
+      <label class="control-label" for="focusedInput">Sidnamn</label>
+      <div class="controls">
+      <%= form_for @page, remote: true do |form| %>
+        <%= form.text_field :name, class: "input-xlarge focused", placeholder: @page.name %>
+        <p>
+          <%= form.submit "Ändra", class: "btn", data: {toggle: "request"} %>
+        </p>
+      <% end %>
+      </div>
+    </div>
+    <p>
+    <p>Allmäna inställningar</p>
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Publicerad
+    </a>
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Editerbar
+    </a>
+  </p>
+  <p>
+     <p>Modul inställningar</p>
+      <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Lösenordsskyddad
+    </a>
+     <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Nyheter
+    </a>
+    <a class="btn btn-info btn-small" data-toggle="button" href="#">
+      <i class="icon-cog icon-white"></i>
+          Bildgalleri
+    </a>
+    </p>
+    <div style="margin-left: 480px;" class="span2">
+        <%= link_to "Skapa en ny sida", "#myModal", 
+                    :class => "btn btn-success ", 
+                    "data-toggle" => "modal" %>
+    </div>
+    <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+        <%= link_to "Editera sida", "http://frontend.dev/editor/pages/" + @page.id.to_s, :class => "btn btn-warning", "style" => "width: 102px;", "target" => "_window" %>
+    </div>
+    <div style="margin-left: 480px; margin-top: 5px;" class="span2">
+        <%= link_to "Ta bort sida", "#", "data-id" => "#{@page.id}",  class: "btn btn-danger delete-page", "style" => "width: 102px;", "data-toggle" => "request" %>
+    </div>
+  
+</div>
+  
+</div>

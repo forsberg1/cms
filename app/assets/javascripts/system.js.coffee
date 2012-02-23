@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+delay = (ms, func) -> setTimeout func, ms
 
 $(document).ready ->
   $(document).trigger 'pageChanged'
@@ -43,14 +44,17 @@ $ ->
 				#alert "Sidan togs bort ur systemet"
 				location.reload()
 	#Change page
-	$('.update-page').on 'click', =>
+	###$('.update-page').on 'click', =>
 		siteid = $('.update-page').attr "data-id"
 		sitetext = $('#focusedInput').attr("value")
 		$.ajax '/update'
 			type: 'POST'
 			data: 'ajax=1&id='+siteid+'&name='+sitetext
 			success: (msg) ->
-				#alert "Sidan uppdaterades."
-				location.reload()
+                $('#change').addClass "success"
+                delay 1000, -> $('#change').removeClass "success"###
+                
+
+
 
 

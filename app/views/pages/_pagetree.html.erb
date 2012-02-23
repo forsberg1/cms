@@ -1,0 +1,19 @@
+<div class="span3">
+  <div class="well" id="menu" style="padding: 8px 0;">
+    <ul class="nav nav-list">
+      <li class="nav-header">Sidträd</li>
+     <ol class="trees">
+     	<% @pageTree.each do |page| %>
+     		<li class="file">
+     			<%= link_to "#{page.name}", page_path(page), id: "#{page.id}", :class => "getinfo icon-file", "data-id" =>  "#{page.id}", remote: false %>
+     		</li>
+     	<% end %>
+	 </ol>
+      <li class="nav-header">Another list header</li>
+      <li><a href="#"><i class="icon-user"></i> Konto</a></li>
+      <li><a href="#"><i class="icon-cog"></i> Inställnngar</a></li>
+      <li><a href="#"><i class="icon-flag"></i> Hjälp</a></li>
+      <li><%= fetch_sign_out_link %></li>
+    </ul>
+  </div>
+</div>

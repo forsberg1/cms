@@ -1,0 +1,7 @@
+$("#<%= @page.id %>").html("<%= j @page.name %>");
+$("div.controls").removeClass("controlls");
+$("div.controls").addClass("control-group success");
+setTimeout(function(){
+    $("div.controls").removeClass("control-group success");
+}, 1000);
+
