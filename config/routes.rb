@@ -1,7 +1,7 @@
 CmsBeta2::Application.routes.draw do
  #devise_for :admins
   devise_for :users
-  resources :pages, :system
+  resources :pages, :system, :design
   devise_scope :user do
     get "home"   => "devise/sessions#new"
     get 'logout' => 'devise/sessions#destroy'

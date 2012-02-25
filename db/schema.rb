@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219122544) do
+ActiveRecord::Schema.define(:version => 20120225073043) do
+
+  create_table "layouts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lives", :force => true do |t|
     t.string   "www"
@@ -22,9 +27,10 @@ ActiveRecord::Schema.define(:version => 20120219122544) do
   end
 
   create_table "pages", :force => true do |t|
-    t.integer  "userid"
+    t.integer  "user_id"
     t.string   "name"
     t.text     "content"
+    t.integer  "activeted",  :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,8 +43,10 @@ ActiveRecord::Schema.define(:version => 20120219122544) do
 
   create_table "psettings", :force => true do |t|
     t.integer  "userid"
-    t.integer  "public"
-    t.integer  "editable"
+    t.integer  "pageid"
+    t.integer  "public",        :default => 1
+    t.integer  "editable",      :default => 1
+    t.integer  "active_models", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
