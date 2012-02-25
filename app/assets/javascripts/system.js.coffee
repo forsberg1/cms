@@ -5,6 +5,13 @@
 
 $(document).ready ->
   $('#myModal').hide()
+  $('.hidden').hide()
+  $(".delete-page").on "click", (event) =>
+    event.preventDefault();
+    $(".delete-page").fadeOut "fast" 
+    $('.hidden').fadeIn "fast"
+    
+
   $(document).trigger 'pageChanged'
   $(document).trigger 'pageUpdated'
 

@@ -1,12 +1,14 @@
 <script>
-  $('#myModal').hide();
+   $('.hidden').hide();
+   $('#myModal').hide();
    $(".create-page").on("click", function(){
       $('.new_page').submit();
      });
   $(".delete-page").on("click", function(event){
     event.preventDefault();
     $(".delete-page").fadeOut("fast");
-    $("#removeHolder").append("<a href='' class='btn btn-info'>Nej</a> <a href='' class='btn btn-danger'>Ja, ta bort.</a>");
+    $('.hidden').fadeIn("fast");
+    
   });
 </script>
 <div class="modal" id="myModal">
@@ -37,9 +39,10 @@
 </div>
 <div style="width: 819px;" class="alert alert-info span8">
 	<b>Allämn information om denna sidan</b>
-	<ul>
+	<ul style="padding: 5px;">
 		<li>Ändra sidinställningar</li>
 		<li>Skapa nya sidor</li>
+    <li>Ta bort sidor</li>
 	</ul>
 </div>
 <div  class="row">
@@ -99,7 +102,14 @@
     </div>
     <div style="margin-left: 480px; margin-top: 5px;" class="span2" id="removeHolder">
         <%= link_to "Ta bort sida", "#", "data-id" => "#{@page.id}",  class: "btn btn-danger delete-page", "style" => "width: 102px;", "data-toggle" => "request" %>
+         <div class="hidden">
+            <%= form_for @page, method: "delete" do |form| %>
+            <%= link_to "Nej", "#", class: "btn btn-info", style: "position: absolute; margin-top: 0px; height: 16px;" %>
+            <%= form.submit "Acceptera", class: "btn btn-success", style: " margin-left:45px;"  %>
+          <% end %>
+        </div>
     </div>
+   
   
 </div>
   

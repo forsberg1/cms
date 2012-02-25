@@ -1,4 +1,9 @@
 <%= render "pagetree" %>
+<% if flash[:notice] %>
+	<div class="span8">
+    	<div id="notice" class="alert alert-danger well"><%= flash[:notice] %></div>
+    </div>
+    <% end %>
 <div id="right_col" class="well span8">
   <h1>Dina sidor</h3>
   	<% @pageTree.each do |pagetree| %>	

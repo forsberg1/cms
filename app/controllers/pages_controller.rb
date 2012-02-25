@@ -30,5 +30,12 @@ class PagesController < ApplicationController
 		end
 	end
 	def destroy
+		@page = current_user.pages.find(params[:id])
+		@page.destroy
+		respond_to do |format|
+			format.html {redirect_to pages_path, notice: "Sidan har nu raderats"}
+
+		end
+
 	end
 end
