@@ -1,4 +1,41 @@
-<div style="margin-left: 20px;" class="subnav">
+<script src="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css"></script>
+<script src="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css"></script>
+
+<style>
+#sortable { list-style-type: none; margin: 0; padding: 0; }
+	#sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 262px; height: 262px; font-size: 4em; text-align: center; }
+	#resizable { width: 120px; height: 120px; padding: 0.5em; position: relative;}
+	#resizable h3 { text-align: center; margin: 0; }
+	.ui-resizable-helper { border: 1px dotted gray; }
+	</style>
+<script>
+	$(function() {
+		var totalSize = 850;
+		$("#layout_holder").hide();
+		$( "#sortable" ).sortable();
+		$( "#sortable" ).disableSelection();
+
+		$( "#draggable" ).draggable({
+			connectToSortable: "#sortable",
+			helper: "clone",
+			revert: "invalid"
+		});
+		$( ".ui-state-default" ).resizable({
+			animate: true,
+			maxWidth: totalSize,
+			ghost: true,
+			helper: 'ui-state-highlight',
+			stop: function(event, ui) {console.log(ui);}
+		});
+		
+		$(".create-layout").on("click", function(event){
+			event.preventDefault();
+			$("#layout_holder").fadeToggle("fast");
+      		
+     	});
+	});
+</script>
+<div style="margin-left: 20px; width: 868px; margin-bottom: 15px;" class="subnav">
     <ul class="nav nav-pills">
       <li><a href="#typography">Skapa layout</a></li>
       <li><a href="#code">Dina layouter</a></li>
@@ -9,26 +46,36 @@
   </div>
 <div style="width: 819px;" class="alert alert-info span10">
 <p>
-  Detta är din huvudsida, här ser du ett huvudflöde vad som hänt sen du senast loggade in.  
+  På Design kan du skapa nya unika layouter men också välja på våra klara. 
 </p>
 </div>
 
-<div class="span3">
-  <div class="well" style="padding: 8px 0;">
-    <ul class="nav nav-list">
-      <li class="nav-header">List header</li>
-      <li class="active"><a href="#"><i class="icon-white icon-home"></i> Dashboard</a></li>
-      <li><a href="#"><i class="icon-cog"></i> Verktyg</a></li>
-      <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
-      <li class="nav-header">Another list header</li>
-      <li><a href="#"><i class="icon-user"></i> Konto</a></li>
-      <li><a href="#"><i class="icon-cog"></i> Inställnngar</a></li>
-      <li><a href="#"><i class="icon-flag"></i> Hjälp</a></li>
-      <li><%= link_to('Logga ut', destroy_user_session_path, "data-toggle" => "true") %></li>
-    </ul>
-  </div>
-</div>
-<div id="right_col" class="well span8">
+
+<div id="right_col" class="well span11">
   <h2>Layouter</h2>
+ 	<% if @layout.empty? %>
+ 		<div class="alert alert-warning">
+ 			<i class="icon-info-sign"></i>
+ 			Det finns inga layouter ännu.
+ 			Skapa en layout genom att trycka på knappen "Skapa layout"
+ 		</div>
+ 	<% else %>
+	 	<% @layout.each do |layouts| %>
+	 		<p><%= layouts.name %></p>
+	 	<% end %>
+ 	<% end %>
+ 	<a href="" class="btn btn-large btn-success create-layout" data-toggle="true">Skapa en egen</a>
+ 	<a href="" class="btn btn-large btn-warning create-box" data-toggle="true">Skapa en box</a>
  
+
+ 	<div style="height: 500px;" id="layout_holder" class="alert alert-success">
+    	<div class="demo">
+
+			<ul id="sortable">
+				<li class="ui-state-default"></li>
+				<li class="ui-state-default"></li>
+				<li class="ui-state-default"></li>	
+			</ul>
+		</div><!-- End demo -->
+    </div>
 </div>

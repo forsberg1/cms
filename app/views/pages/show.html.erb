@@ -1,4 +1,29 @@
 <script>
+$("#page-change").on("click", function(event){
+  
+  $("div.controls").removeClass("controlls");
+  $("div.controls").addClass("control-group success");
+  $(".input-xlarge").css("background", "#ABEBB4");
+  $("#<%= @page.id %>").css("background", "#ABEBB4");
+  setTimeout(function(){
+      $("div.controls").removeClass("control-group success"); 
+      $(".input-xlarge").css("background", "white");
+      $("#<%= @page.id %>").css("background", "#3A87AD");
+  }, 1000);
+});
+ 
+$("#option-activate").on("click", function(event){
+  $("div.controls").removeClass("controlls");
+  $("div.controls").addClass("control-group success");
+  $(".input-xlarge").css("background", "#ABEBB4");
+  $("#<%= @page.id %>").css("background", "#ABEBB4");
+  setTimeout(function(){
+      $("div.controls").removeClass("control-group success"); 
+      $(".input-xlarge").css("background", "white");
+      $("#<%= @page.id %>").css("background", "#3A87AD");
+  }, 1000);
+});
+
    $('.hidden').hide();
    $('#myModal').hide();
    $(".create-page").on("click", function(){
@@ -66,22 +91,37 @@
       <%= form_for @page, remote: true do |form| %>
         <%= form.text_field :name, class: "input-xlarge focused", placeholder: @page.name %>
         <p>
-          <%= form.submit "Ändra", class: "btn", data: {toggle: "request"} %>
+          <%= form.submit "Ändra", class: "btn", id: "page-change", data: {toggle: "request"} %>
         </p>
       <% end %>
       </div>
     </div>
-    <p>
-    <p>Allmäna inställningar</p>
-    <a class="btn btn-info btn-small" data-toggle="button" href="#">
-      <i class="icon-cog icon-white"></i>
-          Publicerad
-    </a>
-    <a class="btn btn-info btn-small" data-toggle="button" href="#">
-      <i class="icon-cog icon-white"></i>
-          Editerbar
-    </a>
-  </p>
+    <%= form_for @page, remote: true do |form| %>
+      <p>
+        <p>Allmäna inställningar</p>
+        <%= form.submit "Publicerad", 
+                        class: 
+                          if @page.activated == 1 
+                            then "btn btn-info btn-small active" 
+                            else "btn btn-info btn-small" 
+                          end, 
+                          "data-toggle" => "button" %>
+        <%= form.hidden_field :activated, id: "option-activate", 
+                              value: 
+                              if @page.activated == 1 
+                                then 0 
+                              else 1 
+                              end %>
+        <!-- <a class="btn btn-info btn-small" data-toggle="button" href="#">
+          <i class="icon-cog icon-white"></i>
+              Publicerad
+        </a> -->
+        <a class="btn btn-info btn-small" data-toggle="button" href="#">
+          <i class="icon-cog icon-white"></i>
+              Editerbar
+        </a>
+      </p>
+    <% end %>
   <p>
      <p>Modul inställningar</p>
       <a class="btn btn-info btn-small" data-toggle="button" href="#">

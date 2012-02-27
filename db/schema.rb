@@ -14,6 +14,10 @@
 ActiveRecord::Schema.define(:version => 20120225073043) do
 
   create_table "layouts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "siteid"
+    t.string   "name",       :limit => 20
+    t.text     "html"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,7 +34,8 @@ ActiveRecord::Schema.define(:version => 20120225073043) do
     t.integer  "user_id"
     t.string   "name"
     t.text     "content"
-    t.integer  "activeted",  :default => 1
+    t.integer  "activated",  :default => 1
+    t.integer  "layout_id",  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
