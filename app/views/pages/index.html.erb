@@ -5,9 +5,20 @@
     </div>
     <% end %>
 <div id="right_col" class="well span8">
-  <h1>Dina sidor</h3>
-  	<% @pageTree.each do |pagetree| %>	
-  		<%= pagetree.name %>
-  	<% end %>
+  <h3>Dina sidor</h3>
+  	<table class="table table-striped table-bordered table-condensed">
+    	<tr>
+    		<th>Sidnamn</th>
+    		<th>Live</th>
+    		<th>Senast ändrad</th>
+    	</tr>
+  		<% @pageTree.each do |pagetree| %>
+  			<tr>
+  				<td><%= pagetree.name %></td>
+  				<td><%= pagetree.activated %></td>
+  				<td><%= pagetree.updated_at %></td>
+  			</tr>
+  		<% end %>
+  	 </table>
 </div>
 
