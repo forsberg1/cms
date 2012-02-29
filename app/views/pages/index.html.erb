@@ -10,13 +10,20 @@
     	<tr>
     		<th>Sidnamn</th>
     		<th>Live</th>
+        <th>Kan editeras</th>
     		<th>Senast ändrad</th>
+        <th>Integrera</th>
     	</tr>
   		<% @pageTree.each do |pagetree| %>
+
+        <% if pagetree.activated == 1 then activated = "Ja" else activated = "Nej" end %>
+        <% if pagetree.editable  == 1 then editable  = "Ja" else editable  = "Nej" end %>
   			<tr>
   				<td><%= pagetree.name %></td>
-  				<td><%= pagetree.activated %></td>
+  				<td><%= activated %></td>
+          <td><%= editable %>
   				<td><%= pagetree.updated_at %></td>
+          <td style="text-align: center; padding-top: 8px;"><%= link_to "Besök sida", page_path(pagetree), class: "btn btn-info" %></td>
   			</tr>
   		<% end %>
   	 </table>

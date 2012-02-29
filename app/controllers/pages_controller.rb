@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@pageTree = current_user.pages.all
+		@pageTree = current_user.pages.order("sortable ASC").all
 	end
 	def show
 		@page     = Page.find(params[:id])	

@@ -56,7 +56,16 @@ $("#option-activate").on("click", function(event){
       } 
   });
   }, 1000);
- 
+  $( "#sortable" ).sortable({
+    receive: function(event, ui) { 
+    
+}
+
+  });
+  $( "#sortable" ).bind( "sortupdate", function(event, ui) {
+    console.log($(ui.item.context.children).attr("id"))
+  });
+ $( "#sortable" ).disableSelection();
 </script>
 <div class="modal" id="myModal">
   <div class="modal-header">
