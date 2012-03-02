@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@pageTree = current_user.pages.where(:subpage != 0)
+		@pageTree = current_user.pages.find(:all)
 		@pageSubs = current_user.pages.where("subpage >= ?", 1)
 	end
 	def show

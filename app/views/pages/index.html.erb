@@ -16,15 +16,17 @@
         <th>Integrera</th>
     	</tr>
   		<% @pageTree.each do |pagetree| %>
-        <% if pagetree.activated == 1 then activated = link_to "Ja", "#", class: "btn btn-success disabled page_status" else activated =  link_to "Nej", "#", class: "btn btn-danger disabled page_status" end %>
-        <% if pagetree.editable  == 1 then editable = link_to "Ja", "#", class: "btn btn-success disabled page_status" else editable  = link_to "Nej", "#", class: "btn btn-danger disabled page_status" end %>
-  			<tr>
-  				<td><%= pagetree.name %></td>
-  				<td><%= activated %></td>
-          <td><%= editable %></td>
-  				<td><%= pagetree.updated_at %></td>
-          <td style="text-align: center; padding-to<p: 8px;"><%= link_to "Besök sida", page_path(pagetree), class: "btn btn-info" %></td>
-  			</tr>
+        <% if pagetree.subpage == 0 %>
+          <% if pagetree.activated == 1 then activated = link_to "Ja", "#", class: "btn btn-success disabled page_status" else activated =  link_to "Nej", "#", class: "btn btn-danger disabled page_status" end %>
+          <% if pagetree.editable  == 1 then editable = link_to "Ja", "#", class: "btn btn-success disabled page_status" else editable  = link_to "Nej", "#", class: "btn btn-danger disabled page_status" end %>
+    			<tr>
+    				<td><%= pagetree.name %></td>
+    				<td><%= activated %></td>
+            <td><%= editable %></td>
+    				<td><%= pagetree.updated_at %></td>
+            <td style="text-align: center; padding-to<p: 8px;"><%= link_to "Besök sida", page_path(pagetree), class: "btn btn-info" %></td>
+    			</tr>
+        <% end %>
   		<% end %>
   	 </table>
 
