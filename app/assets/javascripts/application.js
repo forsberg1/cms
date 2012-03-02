@@ -9,6 +9,7 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require jquery.pjax
+//= require page.js
 //= require_tree .
 
 

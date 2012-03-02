@@ -1,17 +1,26 @@
+<script>
+$(document).ready(function() {
+  $('.subpage').each(function(index) {
+    $(".sortable."+$(this).attr("data-subid")).append("<li id="+$(this).attr("data-id")+" data-id="+$(this).attr("data-subid")+" style='margin-left: 23px;'><span class='label label-warning'><a style='color: white;' href='/pages/"+$(this).attr("data-id")+"'>"+$(this).attr("data-name")+"</a></span></li>");
+  });
+});
+</script>
 <div class="span3">
   <div class="well" id="menu" style="padding: 8px 0;">
     <ul id="sortable" class="nav nav-list">
       <li class="nav-header">Sidträd</li>
-     
      	<% @pageTree.each do |page| %>
       <ol class="trees">
-      <li class="sortable" id=<%= page.sortable %>>
-        <i class="icon-file"></i>
-        <%= link_to content_tag("span", page.name, style: "min-width: 200px;"),page_path(page), id: "#{page.id}", "data-id" =>  "#{page.id}",  class: "label label-info" %>
-      </li>
+      <% if page.subpage == 0 %>
+        <li data-id= <%= page.id %>  class="sortable <%= page.id %>" id=<%= page.sortable %>>
+          <i class="icon-file"></i>
+          <%= link_to content_tag("span", page.name, style: "min-width: 200px;"),page_path(page), id: "#{page.id}", "data-id" =>  "#{page.id}",  class: "label label-info" %>
+        </li>
+        <% else #Is subpage, hide and get data %>
+          <div style="display: none;" class="subpage" data-name= <%=page.name %> data-id=<%= page.id %> data-subid=<%= page.subpage %>><%=page.name %></div>
+       <% end %>
      		</ol>
      	<% end %>
-	 
       <li class="nav-header">Another list header</li>
       <li><a href="#"><i class="icon-user"></i> Konto</a></li>
       <li><a href="#"><i class="icon-cog"></i> Inställnngar</a></li>

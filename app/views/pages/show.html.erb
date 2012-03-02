@@ -1,13 +1,13 @@
+
+
 <script>
 $("#page-change").on("click", function(event){
   $("div.controls").removeClass("controlls");
   $("div.controls").addClass("control-group success");
   $(".input-xlarge").css("background", "#ABEBB4");
-  $("#<%= @page.id %>").css("background", "#ABEBB4");
   setTimeout(function(){
       $("div.controls").removeClass("control-group success"); 
       $(".input-xlarge").css("background", "white");
-      $("#<%= @page.id %>").css("background", "#3A87AD");
   }, 1000);
 });
  
@@ -15,16 +15,15 @@ $("#option-activate").on("click", function(event){
   $("div.controls").removeClass("controlls");
   $("div.controls").addClass("control-group success");
   $(".input-xlarge").css("background", "#ABEBB4");
-  $("#<%= @page.id %>").css("background", "#ABEBB4");
   setTimeout(function(){
       $("div.controls").removeClass("control-group success"); 
       $(".input-xlarge").css("background", "white");
-      $("#<%= @page.id %>").css("background", "#3A87AD");
   }, 1000);
 });
 
    $('.hidden').hide();
    $('#myModal').hide();
+   $('#subpageModal').hide();
    $(".create-page").on("click", function(){
       $('.new_page').submit();
      });
@@ -60,7 +59,6 @@ $("#option-activate").on("click", function(event){
     receive: function(event, ui) { 
     
 }
-
   });
   $( "#sortable" ).bind( "sortupdate", function(event, ui) {
     console.log($(ui.item.context.children).attr("id"))
@@ -73,14 +71,13 @@ $("#option-activate").on("click", function(event){
   <h3>Skapa en ny sida</h3>
   </div>
   <div class="modal-body">
-    <%= form_for Page.new, id: "dsad" do |form| %>
+    <%= form_for Page.new, id: "create" do |form| %>
     <div class="control-group">
         <label class="control-label" for="siteName">Sidnamn</label>
         <div class="controls">
         <%= form.text_field :name, class: "input-xlarge focused", placeholder: "Lorem ipsum" %>
         </div>
     </div>
-   
     <div class="controls">
       <label class="control-label" for="textarea">Standard text</label>
       <%= form.text_area(:content, style: "height: 200px; width: 350px;") %>
@@ -89,6 +86,32 @@ $("#option-activate").on("click", function(event){
   
   <div class="modal-footer">
     <%= form.submit "Skapa sida", class: "btn btn-success btn-large create-page", "data-toggle" => "true" %>
+    <a href="#" data-dismiss="modal" class="btn btn-large">Stäng detta fönster</a>
+  </div>
+  <% end %>
+</div>
+<div class="modal" id="subpageModal">
+  <div class="modal-header">
+  <a class="close" data-dismiss="modal">×</a>
+  <h3>Skapa en ny undersida för <%= @page.name %></h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for Page.new, id: "create-sub" do |form| %>
+    <div class="control-group">
+        <label class="control-label" for="siteName">Sidnamn</label>
+        <div class="controls">
+          <%= form.text_field :name, class: "input-xlarge focused", placeholder: "Lorem ipsum" %>
+        </div>
+    </div>
+    <div class="controls">
+      <label class="control-label" for="textarea">Standard text</label>
+      <%= form.text_area(:content, style: "height: 200px; width: 350px;") %>
+    </div>
+      <%= form.hidden_field :subpage, {:value => @page.id} %>
+    </div>
+  
+  <div class="modal-footer">
+    <%= form.submit "Skapa undersida", class: "btn btn-success btn-large create-page", "data-toggle" => "true" %>
     <a href="#" data-dismiss="modal" class="btn btn-large">Stäng detta fönster</a>
   </div>
   <% end %>
@@ -102,9 +125,12 @@ $("#option-activate").on("click", function(event){
 	</ul>
 </div>
 <div  class="row">
-  <div style="margin-bottom: 8px; margin-top:-10px; margin-left: 765px;" class="span3 ">
+  <div style="margin-bottom: 8px; margin-top:-10px; margin-left: 578px; width: 350px;" class="span3 ">
     <%= link_to "Skapa en ny sida", "#myModal", 
                 :class => "btn btn-success btn-large", 
+                "data-toggle" => "modal" %>
+    <%= link_to "Skapa en ny undersida", "#subpageModal", 
+                :class => "btn btn-info btn-large", 
                 "data-toggle" => "modal" %>
   </div>
 </div>
@@ -182,6 +208,7 @@ $("#option-activate").on("click", function(event){
           Bildgalleri
     </a>
     </p>
+
     <div style="margin-left: 480px; margin-top: 5px;" class="span2">
         <%= link_to "Editera sida", "http://frontend.dev/editor/pages/" + @page.id.to_s, :class => "btn btn-warning", "style" => "width: 102px;", "target" => "_window" %>
     </div>
@@ -189,7 +216,7 @@ $("#option-activate").on("click", function(event){
         <%= link_to "Ta bort sida", "#", "data-id" => "#{@page.id}",  class: "btn btn-danger delete-page", "style" => "width: 102px;", "data-toggle" => "request" %>
          <div class="hidden">
             <%= form_for @page, method: "delete" do |form| %>
-            <%= link_to "Nej", "#", class: "btn btn-info", style: "position: absolute; margin-top: 0px; height: 16px;" %>
+            <%= link_to "Nej", "#", class: "btn btn-danger", style: "position: absolute; margin-top: 0px; height: 16px;" %>
             <%= form.submit "Acceptera", class: "btn btn-success", style: " margin-left:45px;"  %>
           <% end %>
         </div>

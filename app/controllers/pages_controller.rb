@@ -2,11 +2,12 @@ class PagesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@pageTree = current_user.pages.order("sortable ASC").all
+		@pageTree = current_user.pages.where(:subpage != 0)
+		@pageSubs = current_user.pages.where("subpage >= ?", 1)
 	end
 	def show
 		@page     = Page.find(params[:id])	
-		@pageTree = current_user.pages.all
+		@pageTree = current_user.pages.where(:subpage != 0)
 	end
 	def edit
 		@page     = Page.find(params[:id])	
