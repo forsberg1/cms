@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function() {
   $('.subpage').each(function(index) {
-    $(".sortable."+$(this).attr("data-subid")).append("<li id="+$(this).attr("data-id")+" data-id="+$(this).attr("data-subid")+" style='margin-left: 23px;'><span class='label label-warning'><a style='color: white;' href='/pages/"+$(this).attr("data-id")+"'>"+$(this).attr("data-name")+"</a></span></li>");
+    $(".sortable."+$(this).attr("data-subid")).append("<li style='font-size: 9px; margin-left: 20px;' id="+$(this).attr("data-id")+" data-id="+$(this).attr("data-subid")+" style='margin-left: 23px;'><a style='color: black;' href='/pages/"+$(this).attr("data-id")+"'>"+$(this).attr("data-name")+"</a></li>");
   });
 });
 </script>
@@ -10,10 +10,9 @@ $(document).ready(function() {
     <ul id="sortable" class="nav nav-list">
       <li class="nav-header">Sidträd</li>
      	<% @pageTree.each do |page| %>
-      <ol class="trees">
+      <ol class="rounded-list">
       <% if page.subpage == 0 %>
         <li data-id= <%= page.id %>  class="sortable <%= page.id %>" id=<%= page.sortable %>>
-          <i class="icon-file"></i>
           <%= link_to content_tag("span", page.name, style: "min-width: 200px;"),page_path(page), id: "#{page.id}", "data-id" =>  "#{page.id}",  class: "label label-info" %>
         </li>
         <% else #Is subpage, hide and get data %>
