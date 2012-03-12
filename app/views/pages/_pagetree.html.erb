@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function() {
   $('.subpage').each(function(index) {
-    $(".sortable."+$(this).attr("data-subid")).append("<li style='font-size: 9px; margin-left: 20px;' id="+$(this).attr("data-id")+" data-id="+$(this).attr("data-subid")+" style='margin-left: 23px;'><a style='color: black;' href='/pages/"+$(this).attr("data-id")+"'>"+$(this).attr("data-name")+"</a></li>");
+    $(".sortable."+$(this).attr("data-subid")).append("<li style='font-size: 9px; margin-left: 20px;' id="+$(this).attr("data-id")+" data-id="+$(this).attr("data-subid")+" style='margin-left: 23px;'><a style='color: black;' id="+$(this).attr("data-id")+" href='/pages/"+$(this).attr("data-id")+" class='page'>"+$(this).attr("data-name")+"</a></li>");
   });
 });
 </script>
